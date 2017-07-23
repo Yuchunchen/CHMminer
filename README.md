@@ -11,7 +11,7 @@ Analysis, visualiztion and knowledge sharging platform for big data analysis in 
 Please refer to our [wiki](https://github.com/Yuchunchen/CHMminer/wiki) for more information.
 
 ### Installation
-Please refer to our [Installation guide](InstallationGuide) for more information.
+Please refer to our [Installation guide](https://github.com/Yuchunchen/CHMminer/wiki/Installation-guide) for more information.
 
 ### Acknowledgement ###
 The project is mainly suppoted by the Ministry of Science and Technology, Taiwan, R.O.C. under grant no. MOST 105-2634-E-010-001. We would like to thank National Center for High-performance Computing (NCHC) of National Applied Research Laboratories (NARLabs) of Taiwan for providing computational resources and storage resources.
