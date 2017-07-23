@@ -1,19 +1,7 @@
 # Chinese Herb Map miner (CHMminer)
 Analysis, Visualiztion and knowledge Sharging platform for big data in Chinese Medicine
 
-[https://github.com/username/repository/blob/master/wiki/img/ACNE_1.png|alt=CHM_for_Acne]
 
-### Example networks
-Readers interested in our framework are suggested to view the result of Chinese Herb Map (CHM) using real world data.
-
-1. Eczema (2,061,763 prescriptions, analysis time: 1,658 seconds)
-2. Acne (1,594,287 prescriptions, analysis time: 1,403 seconds)
-3. Urticaria (541,180 prescriptions, analysis time: 617 sec)
-4. Atopic dermatitis (153,796 prescriptions, analysis time: 641 sec)
-5. Endomeriosis (20,117 prescriptions, 1,003 sec)
-
-
-### 
 
 ### Scientific publications
 - Chen YC (2017) Presentation in 「政府巨量資料技術工具研發計畫」發表會, July 27, 2017, Taiwan.  [Poster in Chinese](https://github.com/Yuchunchen/CHMminer/blob/master/wiki/img/Presentation.20170725.jpg)
