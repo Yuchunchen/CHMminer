@@ -1,6 +1,6 @@
 # Chinese Herb Map miner (CHMminer)
 Analysis, Visualiztion and knowledge Sharging platform for big data in Chinese Medicine
-![](https://github.com/Yuchunchen/CHMminer/wiki/img/Framework.png)
+![Analysis Framework](https://github.com/Yuchunchen/CHMminer/blob/master/wiki/img/Framework.png)
 
 
 ### Scientific publications
