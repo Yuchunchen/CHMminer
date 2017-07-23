@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.knime.org/2008/09/XMLConfig" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.knime.org/2008/09/XMLConfig http://www.knime.org/XMLConfig_2008_09.xsd" key="settings.xml">
+<entry key="node_file" type="xstring" value="settings.xml"/>
+<config key="flow_stack"/>
+<config key="internal_node_subsettings">
+<entry key="memory_policy" type="xstring" value="CacheSmallInMemory"/>
+</config>
+<config key="model">
+<entry key="sourceCode" type="xstring" value="import xml.etree.ElementTree as ET%%00010import networkx as nx%%00010import grequests%%00010import json%%00010import io%%00010from pandas import DataFrame%%00010from urllib import urlencode%%00010%%00010%%00010# Copy input to output%%00010output_table_1 = input_table_1.copy()  #node%%00010%%00010output_table_1['latin'].fillna(&quot;&quot;, inplace=True)%%00010output_table_1['pinyin'].fillna(&quot;&quot;, inplace=True)%%00010output_table_1['kampo'].fillna(&quot;&quot;, inplace=True)%%00010output_table_1['theSearchTerm2']=output_table_1['ChineseName']%%00010output_table_1['theSearchTerm1']=''%%00010%%00010for idx, row in output_table_1.iterrows():%%00010    searchTerms= [row.latin.strip(&quot; \t&quot;&quot;&quot;).replace(&quot; &quot;,&quot;-&quot;), %%00010                  row.pinyin.strip(&quot; \t&quot;&quot;&quot;).replace(&quot; &quot;,&quot;-&quot;), %%00010                  row.kampo.strip(&quot; \t&quot;&quot;&quot;).replace(&quot; &quot;,&quot;-&quot;)]   # latin, pinyin, kampo%%00010    searchTerms= ['&quot;'+x+'&quot;' for x in searchTerms if len(x) &gt; 0]                        %%00010    theSearchTerm1=&quot; OR &quot;.join(searchTerms)                          # searchTerm1%%00010    output_table_1.set_value(idx,'theSearchTerm1',theSearchTerm1)%%00010%%00010keywordList=[]%%00010colList=[]   # 將 keyword list 中的 key word 和 potential pathway 組合成欄位名稱, %%00010             #                      keyword 大寫,           去掉 字尾  空白 \t  &quot;  空白 以  _ 取代%%00010             #                      potential pathway 小寫  去掉 字尾  空白 \t  &quot;  空白 以  _ 取代%%00010             #                      keywor|pathway          以 __ 相連結  %%00010for idx, row in input_table_2.iterrows():%%00010    keywordList.append(row.potentialPathway.lower())%%00010    colList.append( &quot;{0}__{1}&quot;.format(row.disease.upper().strip(&quot; \t&quot;&quot;&quot;).replace(&quot; &quot;,&quot;_&quot;),%%00010                                     row.potentialPathway.lower().strip(&quot; \t&quot;&quot;&quot;).replace(&quot; &quot;,&quot;_&quot;)))%%00010%%00010URL='https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?'%%00010data = {%%00010    'db': 'pubmed',%%00010    'term': '({0}) AND {1}'%%00010}%%00010%%00010if len(colList) &gt; 0:    #有符合的 disease mapping, 應該進行 pubmed 查詢%%00010   for c in range(0,len(colList)):%%00010       urls=[]%%00010       idxs=[]%%00010       output_table_1[colList[c]]=0%%00010       for idx, row in output_table_1.iterrows():%%00010           if len(getattr(row, 'theSearchTerm1')) &gt; 0:%%00010               data['term']='({0}) AND {1}'.format(getattr(row, 'theSearchTerm1'), keywordList[c])%%00010               urls.append(URL+urlencode(data))%%00010               idxs.append(idx)%%00010       rs = (grequests.get(u) for u in urls)%%00010       ret=grequests.map(rs)%%00010       ret_counts=[]%%00010       i=0%%00010       for response in ret:%%00010           if response:%%00010               root = ET.fromstring(response.content)%%00010               ret_counts.append(int(root.find('Count').text))%%00010               response.close()%%00010               output_table_1.loc[idxs[i], colList[c]]=int(root.find('Count').text)%%00010           i+=1%%00010output_table_2=output_table_1.loc[idxs].copy()%%00010"/>
+<entry key="rowLimit" type="xint" value="1000"/>
+</config>
+<config key="nodeAnnotation">
+<entry key="text" type="xstring" value="連結Pubmed%%00013%%00010尋找作用機轉%%00013%%00010Table1: output Node%%00013%%00010Table2: node search keys (debug用)"/>
+<entry key="bgcolor" type="xint" value="16777215"/>
+<entry key="x-coordinate" type="xint" value="541"/>
+<entry key="y-coordinate" type="xint" value="-1"/>
+<entry key="width" type="xint" value="198"/>
+<entry key="height" type="xint" value="60"/>
+<entry key="alignment" type="xstring" value="CENTER"/>
+<entry key="borderSize" type="xint" value="0"/>
+<entry key="borderColor" type="xint" value="16777215"/>
+<entry key="defFontSize" type="xint" value="9"/>
+<entry key="annotation-version" type="xint" value="20151123"/>
+<config key="styles"/>
+</config>
+<entry key="customDescription" type="xstring" isnull="true" value=""/>
+<entry key="state" type="xstring" value="EXECUTED"/>
+<entry key="factory" type="xstring" value="org.knime.python.nodes.script2in2out.PythonScript2In2OutNodeFactory"/>
+<entry key="node-name" type="xstring" value="Python Script (2⇒2)"/>
+<entry key="node-bundle-name" type="xstring" value="KNIME Python nodes"/>
+<entry key="node-bundle-symbolic-name" type="xstring" value="org.knime.python.nodes"/>
+<entry key="node-bundle-vendor" type="xstring" value="KNIME GmbH, Konstanz, Germany"/>
+<entry key="node-bundle-version" type="xstring" value="3.4.0.v201707041256"/>
+<entry key="node-feature-name" type="xstring" value="KNIME Python Integration"/>
+<entry key="node-feature-symbolic-name" type="xstring" value="org.knime.features.python.feature.group"/>
+<entry key="node-feature-vendor" type="xstring" value="KNIME GmbH, Konstanz, Germany"/>
+<entry key="node-feature-version" type="xstring" value="3.4.0.v201707041256"/>
+<config key="factory_settings"/>
+<entry key="name" type="xstring" value="Python Script (2⇒2)"/>
+<entry key="hasContent" type="xboolean" value="false"/>
+<entry key="isInactive" type="xboolean" value="true"/>
+<config key="ports">
+<config key="port_1">
+<entry key="index" type="xint" value="1"/>
+<entry key="port_spec_class" type="xstring" value="org.knime.core.node.port.inactive.InactiveBranchPortObjectSpec"/>
+<entry key="port_object_class" type="xstring" value="org.knime.core.node.port.inactive.InactiveBranchPortObject"/>
+<entry key="port_object_summary" type="xstring" value="Inactive Port Object"/>
+<entry key="port_spec_location" type="xstring" value="spec/spec.zip"/>
+<entry key="port_object_location" type="xstring" value="object/portobject.zip"/>
+<entry key="port_dir_location" type="xstring" value="port_1"/>
+</config>
+<config key="port_2">
+<entry key="index" type="xint" value="2"/>
+<entry key="port_spec_class" type="xstring" value="org.knime.core.node.port.inactive.InactiveBranchPortObjectSpec"/>
+<entry key="port_object_class" type="xstring" value="org.knime.core.node.port.inactive.InactiveBranchPortObject"/>
+<entry key="port_object_summary" type="xstring" value="Inactive Port Object"/>
+<entry key="port_spec_location" type="xstring" value="spec/spec.zip"/>
+<entry key="port_object_location" type="xstring" value="object/portobject.zip"/>
+<entry key="port_dir_location" type="xstring" value="port_2"/>
+</config>
+</config>
+<config key="filestores">
+<entry key="file_store_location" type="xstring" isnull="true" value=""/>
+<entry key="file_store_id" type="xstring" value="02a08298-d3a2-4731-afa1-5a748933c2d1"/>
+</config>
+</config>

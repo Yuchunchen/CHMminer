@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.knime.org/2008/09/XMLConfig" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.knime.org/2008/09/XMLConfig http://www.knime.org/XMLConfig_2008_09.xsd" key="settings.xml">
+<entry key="node_file" type="xstring" value="settings.xml"/>
+<config key="flow_stack">
+<config key="Variable_0">
+<entry key="type" type="xstring" value="variable"/>
+<entry key="name" type="xstring" value="current_Support"/>
+<entry key="class" type="xstring" value="DOUBLE"/>
+<entry key="value" type="xdouble" value="0.75"/>
+</config>
+<config key="Variable_1">
+<entry key="type" type="xstring" value="variable"/>
+<entry key="name" type="xstring" value="current_minConfidence"/>
+<entry key="class" type="xstring" value="DOUBLE"/>
+<entry key="value" type="xdouble" value="20.0"/>
+</config>
+</config>
+<config key="internal_node_subsettings">
+<entry key="memory_policy" type="xstring" value="CacheSmallInMemory"/>
+</config>
+<config key="model">
+<entry key="sourceCode" type="xstring" value="from pandas import DataFrame%%00010import simplejson as json%%00010import re%%00010%%00010# json structure%%00010#the_cyjs_network = {%%00010#    'data': {%%00010#        'name': '',%%00010#        'collection': ''%%00010#    },input_table['URI']%%00010#    'elements': {%%00010#        'nodes': [ {attributes}],%%00010#        'edges': [ {attributes}]%%00010#    }%%00010#}%%00010fn=input_table['URI'][0].replace('file:/','')%%00010with open(fn) as data_file:%%00010    the_network_data = json.load(data_file,encoding='utf-8' )%%00010%%00010result = re.search('S([0-9]+)p', fn)%%00010if len(result.groups()) &gt;= 1:%%00010    flow_variables['current_Support']=float(result.group(1)) / 100%%00010%%00010%%00010result = re.search('C([0-9]+)p', fn)%%00010if len(result.groups()) &gt;= 1:%%00010    flow_variables['current_minConfidence']=float(result.group(1)) %%00010%%00010edges={}%%00010e=0%%00010for edge in the_network_data['elements']['edges']:%%00010    edges[e]=edge['data']%%00010    e+=1%%00010output_table_1=DataFrame.from_dict(data=edges, orient='index')%%00010%%00010%%00010nodes={}%%00010for node in the_network_data['elements']['nodes']:%%00010    nodes[int(node['data']['id'])]=node['data']%%00010    for k in nodes[int(node['data']['id'])].keys():%%00010        if k[:2] == 'qi' or k[:6] == 'flavor' or k[:8]=='meridian':%%00010            nodes[int(node['data']['id'])][k]=int(nodes[int(node['data']['id'])][k])%%00010output_table_2=DataFrame.from_dict(data=nodes, orient='index')%%00010%%00010"/>
+<entry key="rowLimit" type="xint" value="1000"/>
+</config>
+<config key="nodeAnnotation">
+<entry key="text" type="xstring" value="由json檔讀取%%00013%%00010Table1: Edge%%00013%%00010Table2: Node"/>
+<entry key="bgcolor" type="xint" value="16777215"/>
+<entry key="x-coordinate" type="xint" value="867"/>
+<entry key="y-coordinate" type="xint" value="339"/>
+<entry key="width" type="xint" value="106"/>
+<entry key="height" type="xint" value="45"/>
+<entry key="alignment" type="xstring" value="CENTER"/>
+<entry key="borderSize" type="xint" value="0"/>
+<entry key="borderColor" type="xint" value="16777215"/>
+<entry key="defFontSize" type="xint" value="9"/>
+<entry key="annotation-version" type="xint" value="20151123"/>
+<config key="styles"/>
+</config>
+<entry key="customDescription" type="xstring" isnull="true" value=""/>
+<entry key="state" type="xstring" value="EXECUTED"/>
+<entry key="factory" type="xstring" value="org.knime.python.nodes.script1in2out.PythonScript1In2OutNodeFactory"/>
+<entry key="node-name" type="xstring" value="Python Script (1⇒2)"/>
+<entry key="node-bundle-name" type="xstring" value="KNIME Python nodes"/>
+<entry key="node-bundle-symbolic-name" type="xstring" value="org.knime.python.nodes"/>
+<entry key="node-bundle-vendor" type="xstring" value="KNIME GmbH, Konstanz, Germany"/>
+<entry key="node-bundle-version" type="xstring" value="3.4.0.v201707041256"/>
+<entry key="node-feature-name" type="xstring" value="KNIME Python Integration"/>
+<entry key="node-feature-symbolic-name" type="xstring" value="org.knime.features.python.feature.group"/>
+<entry key="node-feature-vendor" type="xstring" value="KNIME GmbH, Konstanz, Germany"/>
+<entry key="node-feature-version" type="xstring" value="3.4.0.v201707041256"/>
+<config key="factory_settings"/>
+<entry key="name" type="xstring" value="Python Script (1⇒2)"/>
+<entry key="hasContent" type="xboolean" value="true"/>
+<entry key="isInactive" type="xboolean" value="false"/>
+<config key="ports">
+<config key="port_1">
+<entry key="index" type="xint" value="1"/>
+<entry key="port_spec_class" type="xstring" value="org.knime.core.data.DataTableSpec"/>
+<entry key="port_object_class" type="xstring" value="org.knime.core.node.BufferedDataTable"/>
+<entry key="port_object_summary" type="xstring" value="Rows: 292, Cols: 7"/>
+<entry key="port_dir_location" type="xstring" value="port_1"/>
+</config>
+<config key="port_2">
+<entry key="index" type="xint" value="2"/>
+<entry key="port_spec_class" type="xstring" value="org.knime.core.data.DataTableSpec"/>
+<entry key="port_object_class" type="xstring" value="org.knime.core.node.BufferedDataTable"/>
+<entry key="port_object_summary" type="xstring" value="Rows: 88, Cols: 33"/>
+<entry key="port_dir_location" type="xstring" value="port_2"/>
+</config>
+</config>
+<config key="filestores">
+<entry key="file_store_location" type="xstring" isnull="true" value=""/>
+<entry key="file_store_id" type="xstring" isnull="true" value=""/>
+</config>
+</config>
