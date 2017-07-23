@@ -1,13 +1,15 @@
-# CHMminer 
-## Chinese Herb Map miner - Analysis, Visualiztion and knowledge Sharging platform for big data in Chinese Medicine
-
-## Introduction ##
-Traditional Chinese Medicine (TCM), an traditional medicine originates from ancient China with a history of more than 5000 years, is widely used in Taiwan. A majority (> 60%) of Taiwanese used TCM for their illness in conjunction with the so-called western medcicine. In Taiwan, 40 millions of TCM had been made by Taiwan's residents and 2 billions Chinese herb had been prescribed in a year. These prescriptions were encrpyted and release by Taiwan's goverment as the largest Chinese herb prescription database in the world.
-
-[Chinses Herb Map (CHM)]() had been used to present the relationship among Chinese herbs that presribed by the Chinese medicine physician. Our team had published lots of articles used CHM previously. 
-
-The aim of this project is to provide an analysis and knowledege sharing platform for such a large database. Chinese medicine physicians, 
-
-`[Chinese version 中文版本]`
+# CHMminer (Chinese Herb Map miner
+Analysis, Visualiztion and knowledge Sharging platform for big data in Chinese Medicine
 
 
+
+### Scientific publications
+- Presentation 
+- Tsai PJ, Lin YH, Chen JL, Yang SH, Chen YC, Chen HY (2017) Identifying Chinese herbal medicine network for endometriosis: implications from a population-based database in Taiwan  (子宮內膜異位中醫處方網路分析) Evidence-based Complementary and Alternative Medicine 2017
+
+### More inforation
+Please refer to our [wiki](https://github.com/Yuchunchen/CHMminer/wiki) for more information.
+
+### Acknowledgement ###
+The project is mainly suppoted by the Ministry of Science and Technology, Taiwan, R.O.C. under Grant No. MOSTXXXXXXX.
+We would like to thank National Center for High-performance Computing (NCHC) of National Applied Research Laboratories (NARLabs) of Taiwan for providing computational resources and storage resources.
