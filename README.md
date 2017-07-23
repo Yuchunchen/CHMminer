@@ -1,7 +1,7 @@
 # Chinese Herb Map miner (CHMminer)
 Analysis, Visualiztion and knowledge Sharging platform for big data in Chinese Medicine
 
-[[https://github.com/username/repository/blob/master/wiki/img/ACNE_1.png]]
+[https://github.com/username/repository/blob/master/wiki/img/ACNE_1.png]
 
 ### Scientific publications
 - Chen YC (2017) Presentation in 「政府巨量資料技術工具研發計畫」發表會, July 27, 2017, Taiwan.  [Poster in Chinese](https://github.com/Yuchunchen/CHMminer/blob/master/wiki/img/Presentation.20170725.jpg)
