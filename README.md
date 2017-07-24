@@ -2,6 +2,7 @@
 Analysis, visualiztion and knowledge sharging platform for big data analysis in Chinese Medicine
 ![Analysis Framework](https://github.com/Yuchunchen/CHMminer/blob/master/wiki/img/framework_title.png)
 
+Please visit [https://youtu.be/jqJUrE_LUQ8](https://youtu.be/jqJUrE_LUQ8 "Introduction to CHMminer") for quick intro to our framework.
 
 ### Scientific publications
 - Chen YC (2017) Presentation in 「政府巨量資料技術工具研發計畫」發表會, July 27, 2017, Taiwan.  [[Poster in Chinese](https://github.com/Yuchunchen/CHMminer/blob/master/wiki/img/Presentation.20170725.jpg)]
